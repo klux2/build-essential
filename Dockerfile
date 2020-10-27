@@ -1,11 +1,12 @@
 FROM debian:stable
 
-RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true && \
-    echo "tzdata tzdata/Areas select Europe" > debconf && \
-    echo "tzdata tzdata/Zones/Europe select Berlin" >> debconf && \
-    debconf-set-selections debconf && \
-    rm /etc/localtime /etc/timezone && \
-    dpkg-reconfigure tzdata && \
-    apt-get update && \
-    apt-get -y dist-upgrade && \
-    apt-get -y install build-essential
+ARG DEBIAN_FRONTEND=noninteractive
+ARG DEBCONF_NONINTERACTIVE_SEEN=true
+RUN echo "tzdata tzdata/Areas select Europe" > debconf
+RUN echo "tzdata tzdata/Zones/Europe select Berlin" >> debconf
+RUN debconf-set-selections debconf
+RUN rm /etc/localtime /etc/timezone
+RUN dpkg-reconfigure tzdata
+RUN apt-get update
+RUN apt-get -y dist-upgrade
+RUN apt-get -y install build-essential
