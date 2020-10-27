@@ -8,4 +8,4 @@ RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true && \
     dpkg-reconfigure tzdata && \
     apt-get update && \
     apt-get -y dist-upgrade && \
-    apt-get -y install build-essential && \
+    apt-get -y install build-essential
