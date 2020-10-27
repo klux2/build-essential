@@ -1,4 +1,4 @@
-FROM debian:stable-slim
+FROM debian:stable
 
 RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get update && \
