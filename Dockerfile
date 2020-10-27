@@ -1,6 +1,7 @@
 FROM debian:stable-slim
 
-RUN apt-get update
-RUN apt-get -y dist-upgrade
-RUN timedatectl set-timezone Europe/Berlin
-RUN apt-get -y install build-essential
+RUN export DEBIAN_FRONTEND=noninteractive && \
+    apt-get update && \
+    apt-get -y dist-upgrade && \
+    timedatectl set-timezone Europe/Berlin && \
+    apt-get -y install build-essential
